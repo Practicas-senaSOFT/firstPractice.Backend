@@ -5,5 +5,8 @@ import { Board } from '../domain/Board';
 export const findBoardId = async (id:number) : Promise<Board|null> => {
 	return await dsource.getRepository(Board).findOne({where:{id}});
 };
-
+//Obtener todas los tableros creados
+export const getBoards = async ():Promise<Board[]> => {
+	return await dsource.getRepository(Board).find();
+};
 

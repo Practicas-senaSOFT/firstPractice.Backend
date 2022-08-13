@@ -1,7 +1,7 @@
 import { DataBoard } from '../interfaces/board';
 //Importamos crud a DB 
 import { createBoard } from '../models/sql/board/create';
-import { findBoardId } from '../models/sql/board/read';
+import { findBoardId, getBoards } from '../models/sql/board/read';
 import { updateBoard } from '../models/sql/board/update';
 import { deletedBoard } from '../models/sql/board/delete';
 //Importamos entidades
@@ -42,4 +42,12 @@ export const deleteBoardService = async (id:string):Promise<boolean|null> => {
 	console.table(foundBoard);
 	//Eliminar datos
 	return await deletedBoard(idParser);
+};
+
+export const showBoardsService = async ():Promise<Board[]|null> => {
+
+	const result:Board[] = await getBoards();
+	//Validamos lista
+	if(result.length===0)return null;
+	return result;
 };

@@ -1,5 +1,4 @@
 import { Request,Response } from 'express';
-import { rmSync } from 'fs';
 import { DataBoard } from '../../interfaces/board';
 //Importamos servicios
 import { boardPutService, deleteBoardService } from '../../services/board.service';

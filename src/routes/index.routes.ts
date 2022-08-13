@@ -1,11 +1,13 @@
 import { Application, Router } from 'express';
 import routerBoardCreate from './board/createBoard.routes';
 import routerBoardModifications from './board/modifications.routes';
+import routerShowBoards from './board/showBoards.routes'; 
 
 const _routes : [Router][] = [
 	//
 	[routerBoardCreate],
-	[routerBoardModifications]
+	[routerBoardModifications],
+	[routerShowBoards]
 ];
 
 //Exportamos cada ruta guardada en _routes
