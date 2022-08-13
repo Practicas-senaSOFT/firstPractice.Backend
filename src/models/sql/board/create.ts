@@ -1,17 +1,18 @@
 import { Repository } from 'typeorm';
-import { MySQLDataSource as dsource } from '../../config/connection/mysql/datasource';
+import { MySQLDataSource as dsource } from '../../../config/connection/mysql/datasource';
 //Import dominios
-import { Board } from './domain/board';
+import { Board } from '../domain/Board';
 
 
 //Create tablero
-export const createBoard = async (board:Board): Promise<boolean> => {
+export const createBoard = async (board:Board): Promise<boolean|Board> => {
 	// console.log(board);
+	let resultDb:Board;
 	//creamos el tablero
 	try {		
 		const newBoard:Repository<Board> = dsource.getRepository(Board);
 		//Guardamos el datos creado
-		const resultDb:Board = await newBoard.save(board);
+		resultDb = await newBoard.save(board);
 		//Se guardo
 		console.log(resultDb);
 		console.log('Se guardo exitoso!');
@@ -19,5 +20,5 @@ export const createBoard = async (board:Board): Promise<boolean> => {
 		console.log('Erro, create board: ',error);
 		return false;
 	}
-	return true;
+	return resultDb;
 };
