@@ -1,7 +1,10 @@
 import { DataBoard } from '../interfaces/board';
+//Importamos crud a DB 
 import { createBoard } from '../models/sql/board/create';
 import { findBoardId } from '../models/sql/board/read';
 import { updateBoard } from '../models/sql/board/update';
+import { deletedBoard } from '../models/sql/board/delete';
+//Importamos entidades
 import { Board } from '../models/sql/domain/Board';
 
 //Servicio de crecion de Tablero
@@ -26,4 +29,17 @@ export const boardPutService = async (id:string, values:DataBoard):Promise<boole
 	console.table(foundBoard);
 	//actualizar datos
 	return await updateBoard(idParser, values);
+};
+//Eliminar tablero
+export const deleteBoardService = async (id:string):Promise<boolean|null> => {
+	//Parseamos el id
+	const idParser:number = parseInt(id);
+	//Validamos que el tablero exista
+	const foundBoard:Board|null = await findBoardId(idParser);
+	//Validamos si existe
+	if(!foundBoard)return null; //Tablero no encontrado
+	//Se encontro
+	console.table(foundBoard);
+	//Eliminar datos
+	return await deletedBoard(idParser);
 };

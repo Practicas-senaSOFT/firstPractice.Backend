@@ -1,11 +1,12 @@
-import { MySQLDataSource as dsourde } from '../../../config/connection/mysql/datasource';
+import { MySQLDataSource as dsource } from '../../../config/connection/mysql/datasource';
+import { UpdateResult } from 'typeorm';
 import { DataBoard } from '../../../interfaces/board';
 import { Board } from '../domain/Board';
 
 export const updateBoard = async (id:number,values:DataBoard) : Promise<boolean> => {
 	//Tratamos de realizar la actualizacion
 	try {
-		const update = await dsourde.getRepository(Board).update( {id} ,{
+		const update:UpdateResult = await dsource.getRepository(Board).update( {id} ,{
 			name: values.name,
 			description: values.description
 		});		
