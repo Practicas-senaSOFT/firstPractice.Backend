@@ -3,7 +3,7 @@ import { Request,Response } from 'express';
 //Import interface
 import { DataBoard } from '../../interfaces/board';
 //Import Entities
-import { Board } from '../../models/sql/domain/Board';
+import { Board } from '../../models/sql/entity/Board';
 //Import services
 import {createBoardService} from '../../services/board.service';
 

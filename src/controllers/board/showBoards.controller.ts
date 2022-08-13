@@ -1,5 +1,5 @@
 import { Request,Response } from 'express';
-import { Board } from '../../models/sql/domain/Board';
+import { Board } from '../../models/sql/entity/Board';
 import { showBoardsService } from '../../services/board.service';
 
 export const showBoards = async (req:Request,res:Response):Promise<Response> => {

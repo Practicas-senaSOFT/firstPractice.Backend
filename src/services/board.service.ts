@@ -5,7 +5,7 @@ import { findBoardId, getBoards } from '../models/sql/board/read';
 import { updateBoard } from '../models/sql/board/update';
 import { deletedBoard } from '../models/sql/board/delete';
 //Importamos entidades
-import { Board } from '../models/sql/domain/Board';
+import { Board } from '../models/sql/entity/Board';
 
 //Servicio de crecion de Tablero
 export const createBoardService = async (values:DataBoard):Promise<boolean|Board|null> => {
