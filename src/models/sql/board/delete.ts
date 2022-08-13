@@ -1,6 +1,6 @@
 import { MySQLDataSource as dsource } from '../../../config/connection/mysql/datasource';
 import { DeleteResult } from 'typeorm';
-import { Board } from '../domain/Board';
+import { Board } from '../entity/Board';
 
 export const deletedBoard = async (id:number):Promise<boolean> => {
 	//Se trata de eliminar el tablero

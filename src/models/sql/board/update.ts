@@ -1,7 +1,7 @@
 import { MySQLDataSource as dsource } from '../../../config/connection/mysql/datasource';
 import { UpdateResult } from 'typeorm';
 import { DataBoard } from '../../../interfaces/board';
-import { Board } from '../domain/Board';
+import { Board } from '../entity/Board';
 
 export const updateBoard = async (id:number,values:DataBoard) : Promise<boolean> => {
 	//Tratamos de realizar la actualizacion

@@ -1,5 +1,5 @@
 import { MySQLDataSource as dsource } from '../../../config/connection/mysql/datasource';
-import { Board } from '../domain/Board';
+import { Board } from '../entity/Board';
 
 //Buscamos tablero
 export const findBoardId = async (id:number) : Promise<Board|null> => {

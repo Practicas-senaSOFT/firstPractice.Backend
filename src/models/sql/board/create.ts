@@ -1,12 +1,10 @@
 import { Repository } from 'typeorm';
 import { MySQLDataSource as dsource } from '../../../config/connection/mysql/datasource';
 //Import dominios
-import { Board } from '../domain/Board';
-
+import { Board } from '../entity/Board';
 
 //Create tablero
 export const createBoard = async (board:Board): Promise<boolean|Board> => {
-	// console.log(board);
 	let resultDb:Board;
 	//creamos el tablero
 	try {		
