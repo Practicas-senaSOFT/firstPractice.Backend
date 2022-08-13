@@ -2,8 +2,13 @@ import express, {Application} from 'express';
 
 //importamos rutas
 import { routes } from './routes/index.routes';
-
+//MORGAN
 import morgan from 'morgan';
+////////////////////////////////////////////
+//IMPORT CONNECTION MONGODB
+import { connectDB } from './config/connection/mongoDB/connection';
+//NOs conectamos
+connectDB();
 
 //Inicia app
 const app:Application = express();
