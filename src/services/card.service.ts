@@ -1,8 +1,11 @@
 import { DataCard } from '../interfaces/card';
-//Import crud
+//Import crud - Sql/nosql
 import { findBoardId } from '../models/sql/board/read';
 import { createCard } from '../models/sql/card/create';
-
+import { findCardId as fcis } from '../models/sql/card/read';
+import { deleteCard as deleteCardSql } from '../models/sql/card/delete';
+import { deleteCard as deleteCardNoSql } from '../models/nosql/card/delete';
+import { findCardId as fcin } from '../models/nosql/card/read';
 import { createCard as createCardDocument } from '../models/nosql/card/create';
 //Import Entities
 import { Board } from '../models/sql/entity/Board';
@@ -49,4 +52,24 @@ const buildCard = (dataCard:Card,status:string):typeCard => {
 		rating:dataCard.rating,
 		status:status
 	};
+};
+
+//?DEL
+export const deleteCardService = async (id:string) => {
+	//Validar que exista la tarjeta
+	//Encontrar tarjeta por id
+	const foundSql:Card|null = await fcis(id);
+	const foundNoSql = await fcin(id);
+	//Validamos respuesta
+	if(!foundSql || !foundNoSql)return null;
+	//Eliminamos en sql si existe
+	const resultDelSql:boolean = await deleteCardSql(id);
+	if(!resultDelSql)return false;
+
+	//Eliminamos en nosql
+	const resultDelNoSql:boolean = await deleteCardNoSql(id);
+	if(!resultDelNoSql)return false;
+	//All Ok
+	
+	return true;
 };
