@@ -15,7 +15,7 @@ export const createBoard = async (req:Request,res:Response) => {
 	const result:boolean|Board|null = await createBoardService({name,description});
 
 	//Validamos respuesta
-	if(result === null)return res.status(500).json('ERROR: Data not found');
+	if(result === null)return res.status(500).json('Data not found');
 	if(result === false) return res.status(500).json('ERROR: In create DB');
 	return res.status(200).json({
 		msg:'Se guardo exitoso!',

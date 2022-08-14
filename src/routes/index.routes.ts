@@ -6,7 +6,7 @@ import routerCardCreate from './card/createCard.routes';
 import routerCardModified from './card/modifications.routes';
 
 const _routes : [Router][] = [
-	//
+	//EndPonds
 	[routerBoardCreate],
 	[routerBoardModifications],
 	[routerShowBoards],
